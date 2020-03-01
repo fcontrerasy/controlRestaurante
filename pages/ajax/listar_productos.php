@@ -72,8 +72,8 @@ if($action == 'ajax')
 							<td class='text-left'><?php echo $nombre_corto_producto;?></td>
 							<td class='text-left'><?php echo $precio;?></td>	
 							<td>
-								<a href="#" data-target="#editProductoModal" class="edit" data-toggle="modal" data-nombre_producto="<?php echo $nombre_producto;?>" data-nombre_corto_producto="<?php echo $nombre_corto_producto;?>" data-precio="<?php echo $precio;?>"  data-estado="<?php echo $estado;?>" data-code="<?php echo $id_producto;?>" data-id="<?php echo $id_producto;?>" data-imagen="<?php echo "data:".$mime.";base64,".base64_encode($imagen) ?>"><i class="material-icons" data-toggle="tooltip" title="Editar" >&#xE254;</i></a>
-								<a href="#deleteProductoModal" class="delete" data-toggle="modal" data-id="<?php echo $id_producto;?>"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+								<a href="#" data-target="#editProductoModal" class="edit" data-toggle="modal" data-nombre_producto="<?php echo $nombre_producto;?>" data-nombre_corto_producto="<?php echo $nombre_corto_producto;?>" data-precio="<?php echo $precio;?>"  data-estado="<?php echo $estado;?>" data-code="<?php echo $id_producto;?>" data-id="<?php echo $id_producto;?>" data-imagen="<?php echo "data:".$mime.";base64,".base64_encode($imagen) ?>"><i class="fas fa-pencil-alt" data-toggle="tooltip" title="Editar" ></i></a>
+								<a href="#deleteProductoModal" class="delete" data-toggle="modal" data-id="<?php echo $id_producto;?>"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Eliminar"></i></a>
                     		</td>
 						</tr>
 					<?php }?>

@@ -12,7 +12,7 @@ else
 {   define('DB_HOST','localhost');
     define('DB_USER','robocate_root');
     define('DB_PASS','+aHl;R6H60jjY9');
-    define('DB_NAME','robocate_controlRestaurante');    
+    define('DB_NAME','robocate_restaurante');    
 }
 
 function mConectar()

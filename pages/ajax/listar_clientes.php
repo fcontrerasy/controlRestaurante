@@ -90,8 +90,8 @@ if($action == 'ajax')
 							<td class='text-left'><?php echo $identificacion;?></td>
 							<td class='text-left'><?php echo $nombre_corto;?></td>							
 							<td>
-								<a href="#" data-target="#editClienteModal" class="edit" data-toggle="modal" data-nombres="<?php echo $nombres;?>" data-apellidos="<?php echo $apellidos;?>" data-identificacion="<?php echo $identificacion;?>" data-nombre_corto="<?php echo $nombre_corto;?>" data-estado="<?php echo $estado;?>" data-code="<?php echo $id_cliente;?>" data-id="<?php echo $id_cliente;?>"><i class="material-icons" data-toggle="tooltip" title="Editar" >&#xE254;</i></a>
-								<a href="#deleteClienteModal" class="delete" data-toggle="modal" data-id="<?php echo $id_cliente;?>"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+								<a href="#" data-target="#editClienteModal" class="edit" data-toggle="modal" data-nombres="<?php echo $nombres;?>" data-apellidos="<?php echo $apellidos;?>" data-identificacion="<?php echo $identificacion;?>" data-nombre_corto="<?php echo $nombre_corto;?>" data-estado="<?php echo $estado;?>" data-code="<?php echo $id_cliente;?>" data-id="<?php echo $id_cliente;?>"><i class="fas fa-pencil-alt" data-toggle="tooltip" title="Editar" ></i></a>
+								<a href="#deleteClienteModal" class="delete" data-toggle="modal" data-id="<?php echo $id_cliente;?>"><i class="fas fa-trash-alt" data-toggle="tooltip" title="Eliminar"></i></a>
                     		</td>
 						</tr>
 					<?php }?>

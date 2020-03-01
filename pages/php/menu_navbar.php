@@ -1,13 +1,12 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg">
     <div class="container-fluid" >
         <button type="button" id="sidebarCollapse" class="btn btn-primary">
             <i class="fas fa-align-left"></i>
             <span>Cerrar Men&uacute;</span>
-        </button>                    
-		
+        </button>		
 		<div class="nav-item dropdown no-arrow" >
           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="mr-2 d-none d-lg-inline text-gray-600 ml-5"><?php echo  $_SESSION['username'];?></span>            
+            <span class="mr-2 d-none d-lg-inline text-gray-600 ml-3"><?php echo  $_SESSION['username'];?></span>            
             <img class="img-profile rounded-circle" src="../../imagen/<?php echo  $_SESSION['username'];?>.jpg" alt="foto usuario">
           </a>
           <!-- Dropdown -->                      
