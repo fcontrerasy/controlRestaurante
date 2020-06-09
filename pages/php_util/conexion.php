@@ -21,13 +21,14 @@ function mConectar()
         $conexion = new mysqli(DB_HOST, DB_USER, DB_PASS,DB_NAME);
         
         /*verifico si hubo error de conexion*/
-        if ($conexion->connect_error)
-        {	die("Conexión falló: ".$conexion->connect_errno." : ". $conexion->connect_error);
+        if ($conexion->connect_errno)
+        {	printf("Conexión fallo: %s\n", $conexion->connect_error);
+            die("Conexión falló: ".$conexion->connect_errno." : ". $conexion->connect_error);
             return null;
         }
         return $conexion;
     } catch (Exception $e) {
-        die("codeError-> ".$e->getCode()." mensajeError-> ". $e->getMessage());
+        die("Error general de conexión-> codeError :: ".$e->getCode()." mensajeError :: ". $e->getMessage());
         return null;
     }
     

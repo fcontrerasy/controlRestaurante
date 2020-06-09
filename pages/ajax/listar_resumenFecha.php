@@ -113,67 +113,113 @@ if($action == 'ajax')
     $prov3=$rowTemp['producto3'];
     $prov4=$rowTemp['producto4'];
     
+    ///***
+    if(isset($_POST['imprimir_pdf'])){
+        echo "dfsdsdfsdfsdfsdfsdfsfsd";
+        /*require_once('../../tcpdf/tcpdf.php');
+    
+        $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
+        
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetAuthor('Fernando Contreras');
+        $pdf->SetTitle("Reporte rango de fecha ");
+        
+        $pdf->setPrintHeader(false);
+        $pdf->setPrintFooter(false);
+        $pdf->SetMargins(20, 20, 20, false);
+        $pdf->SetAutoPageBreak(true, 20);
+        $pdf->SetFont('Helvetica', '', 10);
+        $pdf->addPage();
+        
+        $content = '';
+        
+        $content .= '
+		<div class="row">
+        	<div class="col-md-12">
+            	<h1 style="text-align:center;">'.$_POST['reporte_name'].'</h1>
+            	    
+      <table border="1" cellpadding="5">
+        <thead>
+          <tr>
+            <th>DNI</th>
+            <th>A. PATERNO</th>
+            <th>A. MATERNO</th>
+            <th>NOMBRES</th>
+            <th>AREA</th>
+            <th>SUELDO</th>
+          </tr>
+        </thead>
+    ';*/
+    }
+    ///***
+    
+    
+    
+    
     //bucle para obtener la data
     if ($numrows>0){
 ?>
-		<div class="table-responsive">
-			<table class="table table-striped table-hover">
-				<thead>
-					<tr>
-						<th class='text-left'>Nombres</th>						
-						<th class='text-left'>Apellidos</th>
-						<th class='text-center' colspan="2"><p><?php echo $prov1;?></p>Cantidad  - Monto</th>
-						<th class='text-center' colspan="2"><p><?php echo $prov2;?></p>Cantidad  - Monto</th>
-						<th class='text-center' colspan="2"><p><?php echo $prov3;?></p>Cantidad  - Monto</th>
-						<th class='text-center' colspan="2"><p><?php echo $prov4;?></p>Cantidad  - Monto</th>
-						<th class='text-left'>Monto total</th>
-					</tr>
-				</thead>
-				<tbody>	
-					<?php 
-						$finales=0;
-						while($row = mysqli_fetch_array($query))
-						{	
-							$nombres=$row['nombres'];
-							$apellidos=$row['apellidos'];							
-							$cantidadTotal_1=$row['cantidadTotal1'];
-							$precioTotal_1=$row['precioTotal1'];								
-							$cantidadTotal_2=$row['cantidadTotal2'];
-							$precioTotal_2=$row['precioTotal2'];							
-							$cantidadTotal_3=$row['cantidadTotal3'];
-							$precioTotal_3=$row['precioTotal3'];							
-							$cantidadTotal_4=$row['cantidadTotal4'];
-							$precioTotal_4=$row['precioTotal4'];
-							$montoTotal=$row['montoTotal'];
-							$finales++;
-					?>	
-						<tr class="<?php echo $text_class;?>">
-							<td class='text-left'><?php echo $nombres;?></td>
-							<td class='text-left'><?php echo $apellidos;?></td>							
-							<td class='text-left'><?php echo $cantidadTotal_1;?></td>							
-							<td class='text-left'><?php echo $precioTotal_1;?></td>								
-							<td class='text-left'><?php echo $cantidadTotal_2;?></td>							
-							<td class='text-left'><?php echo $precioTotal_2;?></td>							
-							<td class='text-left'><?php echo $cantidadTotal_3;?></td>							
-							<td class='text-left'><?php echo $precioTotal_3;?></td>							
-							<td class='text-left'><?php echo $cantidadTotal_4;?></td>							
-							<td class='text-left'><?php echo $precioTotal_4;?></td>						
-							<td class='text-left'><?php echo $montoTotal;?></td>					
-						</tr>
-					<?php }?>
-						<tr>
-							<td colspan='6'> 
-								<?php 
-									$inicios=$offset+1;
-									$finales+=$inicios -1;
-									echo "Mostrando $inicios al $finales de $numrows registros";
-									echo paginate( $page, $total_pages, $adjacents);
-								?>
-							</td>
-						</tr>
-				</tbody>			
-			</table>
-		</div>	
+    	<div class="table-responsive">
+    		<table class="table table-striped table-hover">
+    			<thead>
+    				<tr>
+    					<th class='text-left'>Nombres</th>						
+    					<th class='text-left'>Apellidos</th>
+    					<th class='text-center' colspan="2"><p><?php echo $prov1;?></p>Cantidad  - Monto</th>
+    					<th class='text-center' colspan="2"><p><?php echo $prov2;?></p>Cantidad  - Monto</th>
+    					<th class='text-center' colspan="2"><p><?php echo $prov3;?></p>Cantidad  - Monto</th>
+    					<th class='text-center' colspan="2"><p><?php echo $prov4;?></p>Cantidad  - Monto</th>
+    					<th class='text-left'>Monto total</th>
+    					
+    					<div id="product_1" hidden=""><?php echo $prov1;?></div>
+    				</tr>
+    			</thead>
+    			<tbody>	
+    				<?php 
+    					$finales=0;
+    					//while($row = mysqli_fetch_array($query))
+    					while($row = $query->fetch_assoc())
+    					{	
+    						$nombres=$row['nombres'];
+    						$apellidos=$row['apellidos'];							
+    						$cantidadTotal_1=$row['cantidadTotal1'];
+    						$precioTotal_1=$row['precioTotal1'];								
+    						$cantidadTotal_2=$row['cantidadTotal2'];
+    						$precioTotal_2=$row['precioTotal2'];							
+    						$cantidadTotal_3=$row['cantidadTotal3'];
+    						$precioTotal_3=$row['precioTotal3'];							
+    						$cantidadTotal_4=$row['cantidadTotal4'];
+    						$precioTotal_4=$row['precioTotal4'];
+    						$montoTotal=$row['montoTotal'];
+    						$finales++;
+    				?>	
+    					<tr class="<?php echo $text_class;?>">
+    						<td class='text-left'><?php echo $nombres;?></td>
+    						<td class='text-left'><?php echo $apellidos;?></td>							
+    						<td class='text-center'><?php echo $cantidadTotal_1;?></td>							
+    						<td class='text-center'><?php echo $precioTotal_1;?></td>								
+    						<td class='text-center'><?php echo $cantidadTotal_2;?></td>							
+    						<td class='text-center'><?php echo $precioTotal_2;?></td>							
+    						<td class='text-center'><?php echo $cantidadTotal_3;?></td>							
+    						<td class='text-center'><?php echo $precioTotal_3;?></td>							
+    						<td class='text-center'><?php echo $cantidadTotal_4;?></td>							
+    						<td class='text-center'><?php echo $precioTotal_4;?></td>						
+    						<td class='text-left'><?php echo $montoTotal;?></td>					
+    					</tr>
+    				<?php }?>
+    					<tr>
+    						<td colspan='6'> 
+    							<?php 
+    								$inicios=$offset+1;
+    								$finales+=$inicios -1;
+    								echo "Mostrando $inicios al $finales de $numrows registros";
+    								echo paginate( $page, $total_pages, $adjacents);
+    							?>
+    						</td>
+    					</tr>
+    			</tbody>			
+    		</table>
+    	</div>    	
 	<?php	
 	}	
 }

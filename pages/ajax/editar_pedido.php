@@ -13,7 +13,7 @@
         $editId=mysqli_real_escape_string($conexion, $_POST['idped2'][$ids]);
         //$editIdPro=mysqli_real_escape_string($conexion, $_POST['idproducto'][$ids]);
         //$editNomPro=mysqli_real_escape_string($conexion, $_POST['nomproducto'][$ids]);
-        $editNomCli=mysqli_real_escape_string($conexion, $_POST['nomcli'][$ids]);
+        //$editNomCli=mysqli_real_escape_string($conexion, $_POST['nomcli'][$ids]);  // se comento fcy
         $fechaIngreso=mysqli_real_escape_string($conexion, $_POST['fechaIngreso'][$ids]);
         // lista
         $ped_productoLista=mysqli_real_escape_string($conexion, $_POST['mi_producto'][$ids]);

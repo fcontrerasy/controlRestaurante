@@ -1,11 +1,8 @@
 <?php
 ob_start();
+session_start();
 require '../php_util/parametros.php';
 require '../php_util/sesion.php';
-
-session_start();
-mValidarSesion();
-mValidarTimeOut();
 
 ob_end_flush();
 ?>

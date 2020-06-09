@@ -63,8 +63,7 @@ if($action == 'ajax')
 							$estado=$row['estado'];
 							$imagen=$row['imagen'];
 							$mime=$row['mime'];
-							$finales++;		
-							// echo "<img src='data:".$mime.";base64,".base64_encode($imagen)."'/>";
+							$finales++;							
 					?>	
 						<tr class="<?php echo $text_class;?>">
 							<td hidden="hidden" class='text-left'><?php echo $id_producto;?></td>

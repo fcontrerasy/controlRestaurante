@@ -41,6 +41,7 @@ try {
                                 WHERE us.username = '$username'
                                     and us.estado='1'
                                     and em.estado = '1' limit 1") or die("Problemas en el select:".$conexion->error);
+    
     $reg = $result->fetch_array();
     
     // analiza resultado
@@ -88,7 +89,7 @@ try {
     
 } 
 catch (Exception $e) {
-    die("codeError-> ".$e->getCode()." mensajeError-> ". $e->getMessage());
+    die("codeError-> " . $e->getCode() . " mensajeError-> " . $e->getMessage());
     return null;    
 }
 finally {

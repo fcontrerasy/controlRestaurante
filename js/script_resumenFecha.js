@@ -1,6 +1,7 @@
-		$(function() {
+		$(function() {			
+			$('#imprimirReporte').submit(mImprimirPdf);
 			load(1);
-		});
+		});		
 		
 		function load(page){
 			var fechaDesde=$("#qfd").val();
@@ -12,12 +13,21 @@
 			$.ajax({
 				url:'../ajax/listar_resumenFecha.php',
 				data: parametros,
-				 beforeSend: function(objeto){
+				beforeSend: function(objeto){
 					 							$("#loader").html("Cargando...");
 				 							 },
 				success:function(data){
-										$(".outer_div").html(data).fadeIn('slow');
+										$(".outer_div").html(data).fadeIn('slow');										
 										$("#loader").html("");
 									  }
 			})
 		}/*load*/
+		
+		function mImprimirPdf(evt)
+		{
+			alert("mensaje");
+			cadena = $("#product_1").html();
+			$("#resultados").html(cadena+"fff");
+			evt.preventDefault();
+			
+		}/*mImprimirPdf*/		

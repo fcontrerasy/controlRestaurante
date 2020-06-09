@@ -1,11 +1,8 @@
 <?php
 ob_start();
+session_start();
 require '../php_util/parametros.php';
 require '../php_util/sesion.php';
-
-session_start();
-mValidarSesion();
-mValidarTimeOut();
 
 ob_end_flush();
 ?>
@@ -97,6 +94,9 @@ $fechaFinMes= _data_last_month_day();
         			<div id="resultados"></div><!-- Carga de datos ajax aqui -->
         			<div class='outer_div'></div><!-- Carga de datos ajax aqui -->		
                 </div>
+                <form id="imprimirReporte" name="imprimirReporte" method="post"> 	
+                	<input type="submit" id="imprimir_pdf" name="imprimir_pdf" value="Imprimir PDF" class="btn btn-info col-md-offset-9" />
+        		</form>
             </div>
         </div>        
     </div>     

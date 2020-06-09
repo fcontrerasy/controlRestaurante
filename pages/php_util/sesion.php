@@ -24,4 +24,7 @@ function mValidarTimeOut()
     }
 }/*mValidarTimeOut*/
 
+mValidarSesion();
+mValidarTimeOut();
+
 ?>

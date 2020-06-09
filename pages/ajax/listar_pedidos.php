@@ -142,7 +142,8 @@ if($action == 'ajax')
     						<tr class="<?php echo $text_class;?>">
     							<td hidden class='text-left'><input name="idped[]" value="<?php echo $id_pedido;?>"/></td>                            
     							<td hidden="hidden" class='text-left'><input name="idped2[<?php echo $id_pedido;?>]" value="<?php echo $id_pedido;?>" readonly="readonly"/></td>
-                                <td class='text-left'><input name="nomcli[<?php echo $id_pedido;?>]" value="<?php echo $nombre_corto;?>" readonly="readonly"/></td>
+                                <!-- <td class='text-left'><input name="nomcli[<?php echo $id_pedido;?>]" value="<?php echo $nombre_corto;?>" readonly="readonly"/></td> -->
+                                <td class='text-left'><?php echo $nombre_corto;?></td>
                                 <td class='text-left'>
                                     <select id="mi_producto[<?php echo $id_pedido;?>]" name="mi_producto[<?php echo $id_pedido;?>]" onChange="mCambiarSeleccion(<?php echo $id_pedido;?>)">
                                         <option value="0">Seleccione:</option>

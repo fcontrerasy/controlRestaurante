@@ -1,14 +1,14 @@
 <?php 
 
-function cargarMenu() {
+function cargarMenuBd() {
     
     try {
         include '../php_util/conexion.php';
         $conexion = mConectar();
-        if ($conexion==null || $conexion->connect_error ) {
-            die("La conexion fallo: " . $conexion->connect_error);
-        }
-        
+        if ($conexion==null ) 
+            exit;
+             
+        //$conexion->begin_transaction(MYSQLI_TRANS_START_READ_ONLY);
         $result = $conexion->query(" select mn.nombre_pagina,
                                       mn.logo,
                                       mn.etiqueta,
@@ -22,27 +22,45 @@ function cargarMenu() {
                               	      and mnr.id_rol =  ".$_SESSION['idrol']."
                               	      and mn.estado = '1'
                                       and mn.id_menu !=0
-                              	      order by orden") or die("Problemas en el select:".$conexion->error);
-        while($row = mysqli_fetch_array($result))
+                              	      order by orden") or die("Problemas en el select:".$conexion->error);        
+        //$conexion->commit();
+        
+        // error en consulta ejecutada
+        if(!$result){
+            echo "Error: La ejecución de la consulta falló debido a: \n";
+            //echo "Query: " . $sql . "\n";
+            echo "Errno: " . $conexion->errno . "\n";
+            echo "Error: " . $conexion->error . "\n";
+            exit;
+        }
+        
+        // no obtuvo resultado en la consulta
+        if ($result->num_rows === 0) {
+            echo "Lo sentimos. No se pudo encontrar una coincidencia para la consulta realizada. Inténtelo de nuevo.";
+            exit;
+        }
+        
+        while($row = $result->fetch_assoc())
         {
-            $vectormenu[] = array('nombre_pagina'=> $row['nombre_pagina'],
-                'logo'=> $row['logo'],
-                'etiqueta'=> $row['etiqueta'],                
-                'id_menu'=> $row['id_menu'],
-                'id_menu_padre'=> $row['id_menu_padre'],
-                'es_menu'=> $row['es_menu']
+            $vectormenu[] = array(  'nombre_pagina'=> $row['nombre_pagina'],
+                                    'logo'=> $row['logo'],
+                                    'etiqueta'=> $row['etiqueta'],                
+                                    'id_menu'=> $row['id_menu'],
+                                    'id_menu_padre'=> $row['id_menu_padre'],
+                                    'es_menu'=> $row['es_menu']
             );
         }
         $_SESSION['$vectormenu'] =$vectormenu;
-        cargarOpcionMenu($vectormenu);
+        cargarMenuSesion($vectormenu);
     } catch (Exception $e) {
+        //$conexion->rollback();
     }
     finally {
         mDesconectar($conexion);
     }    
 }/*cargarMenu*/
 
-function cargarOpcionMenu($arregloMenu) {
+function cargarMenuSesion($arregloMenu) { 
     
     $ArregloTmp = $arregloMenu;
     foreach ($arregloMenu as $item )
@@ -58,7 +76,7 @@ function cargarOpcionMenu($arregloMenu) {
         else {
             
             if($item['id_menu_padre']==0 && $item['es_menu'] == 'N')
-            {    echo "<li>";
+            {   echo "<li>";
                 echo "<a href=\"#pageSubmenu\" data-toggle=\"collapse\" aria-expanded=\"false\" class=\"dropdown-toggle\">";
                 echo "<i class=\"". $item['logo']. "\"></i>";
                 echo $item['etiqueta'];            
@@ -77,7 +95,6 @@ function cargarOpcionSubMenu($ArregloTmp, $id_menuTmp)
 {   
     foreach ($ArregloTmp as $item )
     {
-        
         if($item['id_menu_padre'] == $id_menuTmp)
         {
             echo "<li>";
@@ -100,12 +117,11 @@ function cargarOpcionSubMenu($ArregloTmp, $id_menuTmp)
         <strong>CR</strong>
     </div>
     <ul class="list-unstyled components">            
-        <?php     	 
-            
+        <?php            
             if(!isset($_SESSION['$vectormenu']))
-                cargarMenu();
+                cargarMenuBd();
             else
-                cargarOpcionMenu($_SESSION['$vectormenu']);            
+                cargarMenuSesion($_SESSION['$vectormenu']);            
         ?>             
     </ul>       
 </nav>

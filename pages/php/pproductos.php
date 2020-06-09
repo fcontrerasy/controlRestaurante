@@ -1,22 +1,18 @@
 <?php
 ob_start();
+session_start();
 require '../php_util/parametros.php';
 require '../php_util/sesion.php';
-
-session_start();
-mValidarSesion();
-mValidarTimeOut();
-
 ob_end_flush();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<title>Ingreso de Productos</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ingreso de Productos</title>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
@@ -28,8 +24,7 @@ ob_end_flush();
 <body>    
     <div class="wrapper" >
         <!-- menu --> 
-        <?php include ("menu.php"); ?>   
-    
+        <?php include ("menu.php"); ?> 
     	<!-- contenido pagina  -->
         <div id="content">
             <!-- barra menu   -->
@@ -51,7 +46,7 @@ ob_end_flush();
         			<div class='col-sm-4 pull-right'>
         				<div id="custom-search-input">
                             <div class="input-group col-md-12">
-                                <input type="text" class="form-control" placeholder="Buscar por nombre"  id="q" onkeyup="load(1);" />
+                                <input type="text" class="form-control" placeholder="Buscar por nombre"  id="buscarCriterio" onkeyup="load(1);" />
                                 <span class="input-group-btn">
                                     <button class="btn btn-secondary" type="button" onclick="load(1);">
                                         <span class="fas fa-search"></span>                                        
@@ -68,16 +63,15 @@ ob_end_flush();
                 </div>
             </div>
         </div>
-    </div>    
-    <!-- Notificacion  -->
-    <?php include ("menu_notificacion.php"); ?>
-    
+    </div>       
 	<!-- Edit Modal HTML -->
 	<?php include("modal_producto_add.php");?>
 	<!-- Edit Modal HTML -->
 	<?php include("modal_producto_edit.php");?>
 	<!-- Delete Modal HTML -->
-	<?php include("modal_producto_delete.php");?>	
+	<?php include("modal_producto_delete.php");?>
+	<!-- Notificacion -->
+    <?php include ("menu_notificacion.php"); ?> 	
 	
 	<!-- Font Awesome JS -->
     <!-- <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script> -->
@@ -89,5 +83,5 @@ ob_end_flush();
 	<!-- jQuery personales -->
 	<script src="../../js/script_producto.js"></script>
 	<script src="../../js/main.js"></script>
-	</body>
+</body>
 </html>

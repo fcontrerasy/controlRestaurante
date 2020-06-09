@@ -1,117 +1,108 @@
-/* :root{
+:root{
 	--hf-bg-color: rgba(0,188,212,0.9);
-} */
+}
 
 *{
-margin:0;
-padding:0;
+	margin:0;
+	padding:0;
 }
 
 body {
-	font-family: sans-serif,Arial, Helvetica;
+	font-family: sans-serif, Arial, Helvetica; 
 	height: 100vh;
 	background-image: url("../imagen/restaurant.jpg");  
-	background-repeat:no-repeat;
+	background-repeat:no-repeat;	
 	background-position:center top;
 	background-size: cover;
-	
 }
 
 #contenedor{
-	background-color:rgba(255,255,255,0.2);
-	width:90%;
-	height:97%;
-	position:absolute;
-	top:0px;
+	background-color:rgba(255,255,255,0.2);	
+	position:absolute;	
+	top:0;
 	right:0;
 	bottom:0;
-	left:0;
+	left:0;	
+	width:90%;
+	height:90%;
 	margin:auto;
-	/*display:flex;
+	/*padding:1% 0;*/
+	display:flex;
 	flex-direction:column;
 	justify-content:center;
-	align-items:center;
-	vertical-align: center; */
+	/*align-items:center;
+	vertical-align: center;*/	
 }
 
 header{
-	background-color: rgba(0,188,212,0.9);
+	background-color: var(--hf-bg-color); /*rgb(0,188,212,0.9);*/
 	color:rgb(255,255,255);
 	width:100%;
 	height:70px;
 	position:absolute;	
-	top:0;	
+	top:0;
+	
 	display:flex;
 	flex-direction:column;
 	justify-content:center;
-	/* align-items:center;
-	text-align:center; */
-
+	/*align-items:center;	
+	text-align:center;*/
 }
+
 
 header h1{
 	font-size: 2em;
-	margin:auto;
+	margin: auto;	
 }
+
 
 section{
-	width:100%;	
+	width:100%;
+	padding: 3px 0; 	
 	height: calc(100% - 140px);
 	position: absolute;
-	top: 70px;	
-	bottom: 70px;	
+	top: 70px;
+	left: 0;
+	right: 0;
+	
 }
+
 
 .modal {    
-	background-color: rgba(0,0,0,0);
+	/*background-color: rgba(0,0,0,0.2);*/
 	width: 100%;
-	height: 90%;
+	height: 100%;
 	position:absolute;
 	top:0px;
-	right:0;
-	bottom:0;
-	left:0;
-	margin: auto auto 10px;
-	/*padding-top:10%;
+	margin:auto;
+	padding-top:40px;
 	padding-bottom:7px;
-	*/display:flex;
- 	flex-direction:column;
- 	align-items:center;
-}
-
-.modal-content {
-	background-color: rgba(254,254,254,0.7);
-	margin: 1% auto 1% auto;
-	border: 1px solid #888;
-	width: 95%;
-	height: 100%;
-	outline: none;
-	box-sizing: border-box;
 	display:flex;
 	flex-direction:column;
 	justify-content:center;
 	align-items:center;
+	box-sizing: border-box;
+}
 	
+	/* top:50%;
+	left: 50%;
+	transform: translate(-50%, -50%);   */
+	
+
+
+
+.modal-content {
+	background-color: #fefefe;
+	margin: 1% auto 1% auto;
+	border: 1px solid #888;
+	width: 95%;
+	height: 100%;
 }
 
-/*Agregando efecto Zoom*/
+/* Agregando efecto Zoom */
 .animate {
 	-webkit-animation: animatezoom 0.6s;
 	animation: animatezoom 0.6s
-}
-
-.imgcontainer {
-	text-align: center;
-	margin: 25px 0 30px 0;
-	position: relative;	
-}
-
-img.avatar {	
-	width: 20%;
-	/*height: 100px;*/
-	border-radius: 50%;
-	/*position: relative;*/
-	
 }
 
 @-webkit-keyframes animatezoom {
@@ -122,6 +113,17 @@ img.avatar {
 @keyframes animatezoom {
 	from {transform: scale(0)} 
 	to {transform: scale(1)}
+}
+
+.imgcontainer {
+	text-align: center;
+	margin: 25px 0 30px 0;
+	position: relative;	
+}
+
+img.avatar {
+	width: 20%;
+	border-radius: 50%;
 }
 
 label{
@@ -138,7 +140,7 @@ input[type=text], input[type=password] {
 }
 
 .botonsubmit {
-	background-color: rgba(0,188,212,0.9); 
+	background-color: var(--hf-bg-color); 
 	color: white;
 	width: 100%;
 	padding: 14px 20px;
@@ -155,12 +157,13 @@ input[type=text], input[type=password] {
 }
 
 footer{
-	background-color: rgba(0,188,212,0.9);
+	background-color: var(--hf-bg-color);
 	color:rgb(255,255,255);
 	width:100%;
 	height:70px;
 	position:absolute;	
-	bottom:0;	
+	bottom:0;
+	
 	display:flex;
 	flex-direction:column;
 	justify-content:center;
@@ -172,6 +175,7 @@ footer h5{
 	font-size: 0.9em;
 	margin:auto;
 }
+
 
 a:link{ 
 	text-decoration:none; 
@@ -199,16 +203,11 @@ a:link{
 	font-size: 1.2rem;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 360px) {
   header{
   	height:50px;
   }
   
-  section{
-	height: calc(100% - 100px);
-	top: 50px;
-  }
-  	
   header h1 {
     font-size: 1.5em;
   }
